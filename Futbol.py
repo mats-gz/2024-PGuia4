@@ -1,7 +1,5 @@
-#metodo inicial y llamar a los metodos restantes
-
 class jugFutbol:
-    def __init__(self, nombre, edad, posicion, equipo, pais, numCamisa, goles, partidos, asistencias, tarRoja, tarAmarilla, cantPremios, cantReconocimientos):
+    def __init__(self, nombre, edad, posicion, equipo, pais, numCamisa, goles, partidos, asistencias, tarRoja, tarAmarilla, cantPremios = 0, cantReconocimientos = 0, premios = {}):
         self.nombre = nombre
         self.edad = edad
         self.posicion = posicion
@@ -15,42 +13,38 @@ class jugFutbol:
         self.tarAmarilla = tarAmarilla
         self.cantPremios = cantPremios
         self.cantReconocimientos = cantReconocimientos
+        self.premios = premios
+
+    def crear_jugador(self):
+        self.nombre = input("Ingrese nombre del jugador:")
+        self.edad = int(input("Ingrese edad del jugador:"))
+        self.posicion = input("Ingrese posicion del jugador:")
+        self.equipo = input("Ingrese equipo del jugador:")
+        self.pais = input("Ingrese pais del jugador:")
+        self.numCamisa = int(input("Ingrese numero de camisa del jugador:"))
+        self.goles = int(input("Ingrese goles del jugador:"))
+        self.partidos = int(input("Ingrese cantidad de partidos del jugador:"))
+        self.asistencias = int(input("Ingrese asistencias del jugador:"))
+        self.tarRoja = int(input("Ingrese cantidad de tarjetas rojas del jugador:"))
+        self.tarAmarilla = int(input("Ingrese cantidad de tarjetas amarillas del jugador:"))
+        self.cantPremios = int(input("Ingrese cantidad de premios del jugador:"))
+        self.cantReconocimientos = int(input("Ingrese cantidad de reconocimientos del jugador:"))
+
+        self.premios = {}  
+        for _ in range(self.cantPremios):
+            equipo = input("Ingrese el equipo al que le ganó el premio: ")
+            premio = input(f"Ingrese el premio que ganó al equipo {equipo}: ")
+            self.premios[equipo] = premio
+
+        print(f"Los datos de tu jugador son: {self.nombre} de {self.edad} años, juega de {self.posicion} en {self.equipo}, y en {self.pais}, usa el {self.numCamisa}. Marcó {self.goles} goles y {self.asistencias} asistencias en {self.partidos} partidos, le sacaron {self.tarAmarilla} amarillas y {self.tarRoja} rojas. Ganó estos premios: {self.premios}")
 
 
-#primera act y primer modulo, crear el jugador
+# Crear jugador1 con información vacía
+jugador1 = jugFutbol("", 0, "", "", "", 0, 0, 0, 0, 0, 0, 0, {})
 
-def crear_jugador():
-    nombre = input("Ingrese nombre del jugador:")
-    edad = int(input("Ingrese edad del jugador:"))
-    posicion = input("Ingrese posicion del jugador:")
-    equipo = input("Ingrese equipo del jugador:")
-    pais = input("Ingrese pais del jugador:")
-    numCamisa = int(input("Ingrese numero de camisa del jugador:"))
-    goles = int(input("Ingrese goles del jugador:"))
-    partidos = int(input("Ingrese cantidad de partidos del jugador:"))
-    asistencias = int(input("Ingrese asistencias del jugador:"))
-    tarRoja = int(input("Ingrese cantidad de tarjetas rojas del jugador:"))
-    tarAmarilla = int(input("Ingrese cantidad de tarjetas amarillas del jugador:"))
-    cantPremios = int(input("Ingrese cantidad de premios del jugador:"))
-    cantReconocimientos = int(input("Ingrese cantidad de reconocimientos del jugador:"))
+# Llamar al método crear_jugador para crear un jugador y almacenarlo en jugador1
+jugador1.crear_jugador()
 
-    return jugFutbol(nombre, edad, posicion, equipo, pais, numCamisa, goles, partidos, asistencias, tarRoja, tarAmarilla, cantPremios, cantReconocimientos)
-
-
-jugador1 = crear_jugador()
-
-print("Nombre:", jugador1.nombre)
-print("Edad:", jugador1.edad)
-print("Posición:", jugador1.posicion)
-print("Equipo:", jugador1.equipo)
-print("País:", jugador1.pais)
-print("Número de Camisa:", jugador1.numCamisa)
-print("Goles:", jugador1.goles)
-print("Partidos:", jugador1.partidos)
-print("Asistencias:", jugador1.asistencias)
-print("Tarjetas Rojas:", jugador1.tarRoja)
-print("Tarjetas Amarillas:", jugador1.tarAmarilla)
-print("Cantidad de Premios:", jugador1.cantPremios)
-print("Cantidad de Reconocimientos:", jugador1.cantReconocimientos)
-
-        
+# Crear jugador2 con información proporcionada
+jugador2 = jugFutbol("Martina", 17, "defensa", "independiente", "belgica", 7, 0, 1, 1, 4, 12 , {"Boca Juniors": "Copa Libertadores", "Real Madrid": "Champions League"})
+print(f"Los datos de tu jugador son: {jugador2.nombre} de {jugador2.edad} años, juega de {jugador2.posicion} en {jugador2.equipo}, y en {jugador2.pais}, usa el {jugador2.numCamisa}. Marcó {jugador2.goles} goles y {jugador2.asistencias} asistencias en {jugador2.partidos} partidos, le sacaron {jugador2.tarAmarilla} amarillas y {jugador2.tarRoja} rojas. Ganó estos premios: {jugador2.premios}")
