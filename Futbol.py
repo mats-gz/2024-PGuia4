@@ -75,23 +75,46 @@ class jugFutbol:
         else:
             print("No ganó ningún premio.")
 
+def mostrar_menu():
+    while True:
+        menu_inicial()
+        opcion = input("Seleccione el número opción deseado:")
 
-       
+        if opcion == "1":
+            jugador1 = jugFutbol("", 0, "", "", "", 0, 0, 0, 0, 0, 0, 0, {})
+            jugador1.crear_jugador()
+
+        elif opcion == "2":
+            jugador2.actualizar_info()
+
+        elif opcion == "3":
+            jugador2.goles_partido()
+
+        elif opcion == "4":
+            jugador2.es_goleador()
+
+        elif opcion == "5":
+            jugador2.agregar_premios()
+
+        elif opcion == "6":
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opción no válida. Por favor, selecciona una opción válida.")
 
 
-# crear jg1 con info vacia
-jugador1 = jugFutbol("", 0, "", "", "", 0, 0, 0, 0, 0, 0, 0, {})
+def menu_inicial():
+    print("Bienvenido, elige una de las opciones:")
+    print("1 - Crear jugador")
+    print("2 - Actualizar info")
+    print("3 - Promedio de goles")
+    print("4 - Tu jugador, ¿Es goleador?")
+    print("5 - Agregar premios")
+    print("6 - Salir")
 
-# modificar la info vacia llamando la func de crear jugador y almacenando todo en el jugador recien
-#jugador1.crear_jugador()
 
-# Crear jugador2 con información proporcionada
-jugador2 = jugFutbol("Martina", 17, "Goleador", "independiente", "belgica", 7, 10, 4, 1, 34, 3, 3,premios = {"Barcelona": "Mejor Jugador del Mes", "Real Madrid": "Máximo Goleador de la Temporada", "PSG": "Premio Fair Play"})
+# crear jg2 para demostracion beta del menu
+jugador2 = jugFutbol("Martina", 17, "defensa", "Independiente", "Argentina", 7, 0, 1, 1, 4, 12, ["Premio1", "Copa Libertadores", "Copa ETE SECH", "Oi Oi Oi"])
 
-# Imprimir los datos del jugador2 con los premios
-print(f"Los datos de tu jugador son: {jugador2.nombre} de {jugador2.edad} años, juega de {jugador2.posicion} en {jugador2.equipo}, y en {jugador2.pais}, usa el {jugador2.numCamisa}. Marcó {jugador2.goles} goles y {jugador2.asistencias} asistencias en {jugador2.partidos} partidos, le sacaron {jugador2.tarAmarilla} amarillas y {jugador2.tarRoja} rojas. Gano estos premios {jugador2.premios}")
+mostrar_menu()
 
-#jugador2.actualizar_info()
-jugador2.goles_partido()
-jugador2.agregar_premios()
-jugador2.es_goleador()
